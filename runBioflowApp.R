@@ -10,6 +10,8 @@ update_github <- function() {
     message("working on ", d$Package)
     if (!is.null(d$GithubSHA1)) {
       message("Github found")
+      checkInt=curl::has_internet()
+	   if(checkInt==TRUE){install_github(repo = paste0(d$GithubUsername, "/", d$GithubRepo))}
       install_github(repo = paste0(d$GithubUsername, "/", d$GithubRepo))
     }
   }
